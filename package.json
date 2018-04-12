@@ -1,0 +1,19 @@
+{
+  "name": "paint",
+  "display_name": "paint",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Karri Väänänen",
+    "email": "knvaananen@gmail.com"
+  },
+  "devDependencies": {
+    "anypixel": "^1.0.2",
+    "three": "^0.90.0"
+  },
+  "scripts": {
+    "build": "browserify src/app.js > index.js"
+  },
+  "license": "MIT"
+}
