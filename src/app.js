@@ -5,7 +5,7 @@ var THREE = require('three');
 var Time = require('./Time.js');
 
 var app = {
-    color: (new THREE.Color()).setHSL(Math.random(), 0.5, 0.5)
+    color: (new THREE.Color()).setHSL(Math.random(), 1, 0.5),
 };
 
 var buttons = {
@@ -36,13 +36,17 @@ function getColor(x,y) {
     let right = x == anypixel.config.width - 1;
     let topbottom = y == 0 || y == anypixel.config.height - 1;
     if (topbottom) {
-        color.setHSL(x / anypixel.config.width, 0.5, 0.5);
+        color.setHSL(x / anypixel.config.width, 1, 0.5);
     }
     else if (left) {
-        color.setHSL(0, 0, 1);
+        var hsl = app.color.getHSL();
+        var val = Math.max(0, Math.min(1, (y-3) / (anypixel.config.height-6) + 0.0001 ));
+        color.setHSL(hsl.h, hsl.s, val);
     }
     else if (right) {
-        color.setHSL(0, 0, 0.0001);
+        var hsl = app.color.getHSL();
+        var val = Math.max(0, Math.min(1, (y-3) / (anypixel.config.height-6) ));
+        color.setHSL(hsl.h, val, hsl.l);
     }
     else {
         return null;
